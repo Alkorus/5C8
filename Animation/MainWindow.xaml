@@ -1,0 +1,15 @@
+﻿<Window x:Class="Animation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Animation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Button Content="Stretching" Click="stretch_clk"/>
+        <Button Content="Anim avec timer" Click="timer_clk"/>
+        <Button Content="promenade C#" Click="promCS_clk"/>
+        <Button Content="promenade XAML" Click="promXAML_clk"/>
+    </StackPanel>
+</Window>

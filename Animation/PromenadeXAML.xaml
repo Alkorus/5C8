@@ -1,0 +1,27 @@
+﻿<Window x:Class="Animation.PromenadeXAML"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PromenadeXAML" Height="300" Width="300">
+    <Canvas>
+        <Button Canvas.Left="10" Canvas.Top="10" Content="Poussez moi svp!">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="(Canvas.Left)">
+                                <DoubleAnimation From="10" To="760" Duration="0:0:2"></DoubleAnimation>
+                                <DoubleAnimation From="760" To="10" Duration="0:0:1" BeginTime="0:0:6"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="(Canvas.Top)">
+                                <DoubleAnimation From="10" To="235" Duration="0:0:2" BeginTime="0:0:3"></DoubleAnimation>
+                                <DoubleAnimation From="235" To="10" Duration="0:0:1" BeginTime="0:0:5"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Canvas>
+</Window>

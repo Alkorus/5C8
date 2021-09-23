@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Bourse21.Vues.UC_Proprietaires"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bourse21.Vues"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="1000"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Background="Navy" Foreground="Yellow" Text="{Binding TexteDEnteteListe}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="24" Background="Navy" Foreground="Yellow" Text="{Binding TexteDEnteteDetail}"></TextBlock>
+
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Name="ListeProprio" ItemsSource="{Binding SommaireProprietaires}" SelectedItem="{Binding ProprietaireSelectionne}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="14" Text="{Binding Nom}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Nom"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Nom}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Naissance"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Naissance, StringFormat=yyyy-MM-dd}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Liquidite"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Liquidite}"/>
+
+            <DockPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="3">
+                <WrapPanel>
+                    <Image Name="img_Proprio" Stretch="Fill" Height="100" Width="80"/>
+                    <Button Click="btnOpenFile_Click">Modifier image</Button>
+                </WrapPanel>
+            </DockPanel>
+        </Grid>
+        
+        
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="4">
+            <Button Height="45" Command="{Binding cmdPreparerNouveau_Proprio}" Click="btnPreparerNeo_Click">Préparer Néo</Button>
+            <Button Height="45" Command="{Binding cmdInserer_Proprio}">Inserer</Button>
+            <Button Height="45" Command="{Binding cmdModifier_Proprio}">Modifier</Button>
+            <Button Height="45" Command="{Binding cmdSupprimer_Proprio}">Supprimer</Button>
+        </StackPanel>
+
+        <DataGrid Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Acquisitions}" AutoGenerateColumns="False" IsReadOnly="True" Name="dg_Posessions">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cie" Binding="{Binding CIEVendue.RaisonSociale}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nb actions" Binding="{Binding NbActions}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Valeur : Unit" Binding="{Binding CoutUnitaire}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Total : " Binding="{Binding Total}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

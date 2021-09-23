@@ -1,0 +1,17 @@
+﻿<Window x:Class="Animation.Timer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Timer" Height="300" Width="300">
+    <Canvas>
+        <Image Source="drapeau.jpg" Name="imgDrapeau" Canvas.Top="20" Canvas.Left="0" Width="40"></Image>
+        <WrapPanel>
+            <Button Content="Agrandir" Click="btnAgrandir"></Button>
+            <Button Content="Rétrécir" Click="btnRetrecir"></Button>
+            <Button Content="Arret" Click="btnArret"></Button>
+            <Button Content="Droite" Click="btnMoveRight"></Button>
+            <Button Content="Gauche" Click="btnMoveLeft"></Button>
+            <Button Content="En bas" Click="btnMoveDown"></Button>
+            <Button Content="En haut" Click="btnMoveUp"></Button>
+        </WrapPanel>
+    </Canvas>
+</Window>
